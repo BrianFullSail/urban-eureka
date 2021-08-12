@@ -12,7 +12,7 @@ function App() {
     return response;
 }
 
-  const addPost = async e => {
+  const addCoin = async e => {
     e.preventDefault();
     if(document.myForm.userSearch.value === "")
     {
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <div style={styles.main} id='main'>
-      <form name='myForm' onSubmit={addPost} style={styles.form}>
+      <form name='myForm' onSubmit={addCoin} style={styles.form}>
       <h1>Please enter a crypto currency you would like to search</h1>
       <input placeholder="Enter a Crypto Currency" style={styles.input} id='userSearch'/>
       <Button btnText='Search' />
