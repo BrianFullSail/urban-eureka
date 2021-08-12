@@ -18,7 +18,7 @@ Here's what I worked on this past week...
 
 **Week 1**: Proof of Concept 
 
-**Week 2**:    
+**Week 2**: Project Design composites   
 
 **Week 3**:    
 
@@ -31,7 +31,8 @@ Here's what I worked on this past week...
 ### Installs
 
 npm install -g create-react-app <br>
-npm install coingecko-api
+npm install coingecko-api<br>
+npm install react-icons
 
 ---
 ### Progress
@@ -39,7 +40,13 @@ npm install coingecko-api
 #### Milestone 1
 
 - [X] Repo Created: Complete! 
-- [ ] Proof of Concept: In Progress
-- [ ] Wireframes: In Progress 
-- [ ] Production Presentation: In Progress
-- [ ] Trello Board: In Progress
+- [X] Proof of Concept: Complete!
+- [X] Wireframes: Complete!
+- [X] Production Presentation: Complete!
+- [X] Trello Board: Complete!
+
+### Milestons 2
+
+- [X] PDF Composites: Complete!
+- [ ] Production Progress Presentation: In Progress
+- [ ] Update Trello Board: In Progress
