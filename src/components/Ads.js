@@ -23,6 +23,7 @@ const styles = {
     image: {
         width: '100%',
         marginBottom: '1rem',
-        borderRadius: '.25rem'
+        borderRadius: '.25rem',
+        boxShadow: '0 0 3px 3px gray'
     }
 }

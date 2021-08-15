@@ -122,7 +122,8 @@ const styles = {
     paddingTop: '5rem',
     justifyContent: 'space-around',
     alignItems: 'space-around',
-    backgroundColor: '#000'
+    backgroundColor: '#000',
+    boxShadow: '0 0 5px 5px #D6D7DD'
   },
   images: {
     height: 'calc((100% / 5) * 4)',

@@ -24,9 +24,10 @@ const styles = {
     news: {
         display: 'flex',
         width: '75%',
-        backgroundColor: 'grey',
+        backgroundColor: '#fff',
         paddingLeft: '1rem',
         PaddingRight: '1rem',
-        borderRadius: '.25rem'
+        borderRadius: '.25rem',
+        boxShadow: '0 0 5px 5px #D6D7DD'
     }
 }
