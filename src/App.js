@@ -6,6 +6,8 @@ import Nav from './components/Nav'
 import coins from './images/cryptocurrency.png'
 import bitcoin from './images/blackcoin.png'
 import coinstacks from './images/coinstacks.png'
+import Routes from './components/Routes'
+import { MdSearch } from 'react-icons/md';
 
 function App() {
 
@@ -66,6 +68,9 @@ function App() {
           <img src={bitcoin} alt='Bitcoin on black background' style={styles.images}/>
           <Nav />
         </div>
+        <main>
+          <Routes />
+        </main>
         <form name='myForm' onSubmit={addCoin} style={styles.form}>
           <h2>Please enter a crypto currency you would like to search</h2> 
           <input placeholder="Enter a Crypto Currency" style={styles.input} id='userSearch'/>
@@ -88,7 +93,8 @@ const styles = {
   main: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#EBEBED'
   },
   form: {
     width: '30%',
@@ -121,5 +127,11 @@ const styles = {
   images: {
     height: 'calc((100% / 5) * 4)',
     width: '33.3%',
+  },
+  body: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: '2rem'
   }
 }
