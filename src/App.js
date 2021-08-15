@@ -80,6 +80,8 @@ function App() {
   );
 }
 
+//may add another API for home page
+
 export default App;
 
 const styles = {
