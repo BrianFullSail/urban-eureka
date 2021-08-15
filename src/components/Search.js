@@ -20,7 +20,8 @@ const styles = {
     },
     input: {
         width: '100%',
-        border: 'none'
+        border: 'none',
+        borderRadius: '.25rem'
     },
     button: {
         border: 'none',
