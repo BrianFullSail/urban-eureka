@@ -5,7 +5,7 @@ function Home() {
     return (
         <section style={styles.body}>
           <article style={styles.news}>
-            <p> sample here</p>
+            <h2> Sample here</h2>
           </article>
            <Ads />
         </section>
@@ -23,8 +23,10 @@ const styles = {
     },
     news: {
         display: 'flex',
-        alignItems: 'center',
         width: '75%',
-        backgroundColor: 'grey'
+        backgroundColor: 'grey',
+        paddingLeft: '1rem',
+        PaddingRight: '1rem',
+        borderRadius: '.25rem'
     }
 }
