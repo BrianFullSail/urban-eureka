@@ -32,7 +32,8 @@ Here's what I worked on this past week...
 
 npm install -g create-react-app <br>
 npm install coingecko-api<br>
-npm install react-icons
+npm install react-icons<br>
+npm install react-router-dom
 
 ---
 ### Progress
@@ -48,5 +49,5 @@ npm install react-icons
 ### Milestons 2
 
 - [X] PDF Composites: Complete!
-- [ ] Production Progress Presentation: In Progress
-- [ ] Update Trello Board: In Progress
+- [X] Production Progress Presentation: In Progress
+- [X] Update Trello Board: In Progress

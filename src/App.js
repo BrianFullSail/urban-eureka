@@ -1,6 +1,11 @@
 import './App.css';
 import Button from './components/Button';
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Nav from './components/Nav'
+import coins from './images/cryptocurrency.png'
+import bitcoin from './images/blackcoin.png'
+import coinstacks from './images/coinstacks.png'
 
 function App() {
 
@@ -52,17 +57,26 @@ function App() {
   }
 
   return (
-    <div style={styles.main} id='main'>
-      <form name='myForm' onSubmit={addCoin} style={styles.form}>
-      <h1>Please enter a crypto currency you would like to search</h1>
-      <input placeholder="Enter a Crypto Currency" style={styles.input} id='userSearch'/>
-      <Button btnText='Search' />
-      </form>
-      <div id='info'>
-        <p style={styles.output} id='title'></p>
-        <p id='price'></p>
+    <Router>
+      <div style={styles.main} id='main'>
+        <h1>Cryptocurrency Price Search</h1>
+        <div style={styles.pics}>
+          <img src={coins} alt='Many different crypto currencys' style={styles.images}/>
+          <img src={coinstacks} alt='Many different coins' style={styles.images}/>
+          <img src={bitcoin} alt='Bitcoin on black background' style={styles.images}/>
+          <Nav />
+        </div>
+        <form name='myForm' onSubmit={addCoin} style={styles.form}>
+          <h2>Please enter a crypto currency you would like to search</h2> 
+          <input placeholder="Enter a Crypto Currency" style={styles.input} id='userSearch'/>
+          <Button btnText='Search' />
+        </form>
+        <div id='info'>
+          <p style={styles.output} id='title'></p>
+          <p id='price'></p>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
@@ -70,7 +84,9 @@ export default App;
 
 const styles = {
   main: {
-    display: 'flex'
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   form: {
     width: '30%',
@@ -89,5 +105,19 @@ const styles = {
   },
   output: {
     fontSize: '1.6rem'
+  },
+  pics: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    height: '45vh',
+    paddingTop: '5rem',
+    justifyContent: 'space-around',
+    alignItems: 'space-around',
+    backgroundColor: '#000'
+  },
+  images: {
+    height: 'calc((100% / 5) * 4)',
+    width: '33.3%',
   }
 }
