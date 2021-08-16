@@ -11,7 +11,7 @@ export default Button;
 
 const styles = {
     btn: {
-        width: '100%',
+        width: '25%',
         height: '50px',
         display: 'flex',
         flexDirection: 'column',

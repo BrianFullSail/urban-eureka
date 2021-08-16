@@ -1,10 +1,9 @@
 import React from 'react';
-import { MdSearch } from 'react-icons/md';
 
 const Search = props => {
     return(
         <form style={styles.search} onSubmit={props.searchMe}>
-            <button style={styles.button}><MdSearch size="20px" /></button>
+            <button style={styles.button}></button>
             <input placeholder="Search" style={styles.input}/>
         </form>
     )
@@ -16,10 +15,10 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        width: '40%'
+        width: '100%'
     },
     input: {
-        width: '100%',
+        width: '40%',
         border: 'none',
         borderRadius: '.25rem'
     },
