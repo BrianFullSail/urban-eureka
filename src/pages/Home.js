@@ -14,7 +14,7 @@ function Home() {
                     <p>Bitcoin currently leads the market being the most popular and the highest price point. Ethereum is closing in fast on Bitcoins popularity and may some day even lead on price point. Today there are many other cryptocurrencies such as Caradno and Chainlink gaining popularity as their prices sore. Anyone new to the market would be wise to invest in anything related to Ethereum as it covers many of the other currencies on the market that use the Ethereum blockchain.</p>
                 </div>
             </article>
-           <Ads />
+            <Ads />
         </section>
     )
 }

@@ -1,7 +1,8 @@
 import React from 'react'
 import Button from '../components/Button';
+import { withRouter } from 'react-router-dom'
 
-function Search() {
+function Search({ history }) {
     async function fetchAPI(){
         const coinGecko = require('coingecko-api');
         const coingeckoclient = new coinGecko();
@@ -12,42 +13,43 @@ function Search() {
 
     const addCoin = async e => {
         e.preventDefault();
-        if(document.myForm.userSearch.value === "")
-        {
-          alert("Please enter a valid crypto currency to search")
-          return false;
+
+        if(document.myForm.userSearch.value === ""){
+            alert("Please enter a valid crypto currency to search")
+            return false;
         }
         else{
           const data = await fetchAPI();
-        
-          if(data.code !== 200)
-          {
+
+          // If not successful
+          if(data.code !== 200){
             alert(`${document.myForm.userSearch.value} is not a valid currency! Please enter a valid currency and try again.`)
             return false;
           }
-    
-          document.getElementById('title').innerHTML = `The current price for ${data.data.name} is:`;
-          document.getElementById('price').innerHTML = data.data.market_data.current_price.usd;
-    
+
+          // Load the SearchHistory page
+          history.push('/SearchHistory');
+          console.log(data.data.market_data.current_price.usd)
+
+          // toFixed add to zeros after the decimal
+          const price = parseFloat(data.data.market_data.current_price.usd).toFixed(2);
+
+          document.getElementById('title').innerHTML = `Current price for ${data.data.name}`;
+
+          // .replace to add the commas
+          document.getElementById('price').innerHTML = '$' + price.toString(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
           const image = new Image();
           image.id = 'coinLogo';
           image.src = data.data.image.large;
-          image.style.height = '200px';
-          image.style.marginTop = '2rem';
-          
-          if(document.getElementById('coinLogo')){
-            const lastImage = document.getElementById('info').lastChild;
-    
-            document.getElementById('info').removeChild(lastImage);
-            document.getElementById('info').appendChild(image);
-          }
-          else{
-            document.getElementById('info').appendChild(image);
-          }
-       
-          e.target.reset();
+          image.style.height = '75px';
+          document.getElementById('info').style.backgroundColor = '#fff'
+          document.getElementById('info').style.boxShadow = '0 0 5px 5px #D6D7DD'
+
+          // Add to the beginning of the element
+          document.getElementById('info').insertBefore(image, document.getElementById('info').firstChild)
+
         }
-      }
+    }
     
     return (
         <section>
@@ -56,22 +58,18 @@ function Search() {
                 <input placeholder="Enter a Crypto Currency" style={styles.input} id='userSearch'/>
                 <Button btnText='Search' />
             </form>
-            {/* <div id='info'>
-                <p style={styles.output} id='title'></p>
-                <p id='price'></p>
-            </div> */}
             <div style={styles.examples}>
                 <h3>Example Searches</h3>
                 <ul style={styles.list}>
                     <li style={styles.item}>Bitcoin</li>
                     <li style={styles.item}>Ethereum</li>
-                    <li style={styles.item}>Caradno</li>
+                    <li style={styles.item}>Cardano</li>
                     <li style={styles.item}>Chainlink</li>
                 </ul>
                 <ul style={styles.list}>
                     <li style={styles.item}>Dogecoin</li>
                     <li style={styles.item}>Lightcoin</li>
-                    <li style={styles.item}>Amp</li>
+                    <li style={styles.item}>Monero</li>
                     <li style={styles.item}>Cosmos</li>
                 </ul>
             </div>
@@ -79,17 +77,9 @@ function Search() {
     )
 }
 
-export default Search;
+export default withRouter(Search);
 
 const styles = {
-    body: {
-        width: '100%',
-        height: '75vh',
-        fontSize: '1.6rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
     input: {
         display: 'flex',
         flexDirection: 'row',
@@ -109,8 +99,7 @@ const styles = {
     },
     examples: {
         width: '75vw',
-        height: '25vh',
-        marginTop: '3rem',
+        marginTop: '4rem',
         backgroundColor: '#fff',
         display: 'flex',
         flexDirection: 'column',
@@ -124,6 +113,7 @@ const styles = {
         alignItems: 'center'
     },
     item: {
+        display: 'flex',
         width: 'calc(100%/4)',
         margin: '0 5rem'
     }
