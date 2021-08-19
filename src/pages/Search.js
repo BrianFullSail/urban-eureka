@@ -27,12 +27,16 @@ function Search({ history }) {
             return false;
           }
 
-          // Load the SearchHistory page
-          history.push('/SearchHistory');
-          console.log(data.data.market_data.current_price.usd)
-
           // toFixed add to zeros after the decimal
           const price = parseFloat(data.data.market_data.current_price.usd).toFixed(2);
+          
+          const coin = {
+              name: data.data.name,
+              price: '$' + price.toString(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+              img: data.data.image.large
+          }
+          // Load the SearchHistory page
+          history.push({pathname: '/SearchHistory', state: {data: coin}});
 
           document.getElementById('title').innerHTML = `Current price for ${data.data.name}`;
 

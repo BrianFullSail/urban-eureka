@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function SearchHistory() {
+function SearchHistory(props) {
+    const [coinList, setState] = useState([])
+    
+    useEffect(() => {
+        // if(coinList.length === 0){
+        //     return
+        // }
+        setState(coin => [...coin, props.location.state.data])
+    }, []);
+
+    let searchList = coinList.map((element) => {
+        return <article style={styles.article2}>
+            <img alt='cryptocurrency coin logo' src={element.img} style={{height: '75px'}}/>
+            <p style={styles.output}>{element.name}</p>
+            <p style={styles.output}>{element.price}</p>
+         </article>
+    })
 
     return (
         <section style={styles.body}>
@@ -13,10 +29,7 @@ function SearchHistory() {
             </div>
             <div style={styles.main}>
                <h2>Search History</h2>
-               <article id='infoH' style={styles.article}>
-                    <p style={styles.output} id='titleH'></p>
-                    <p style={styles.output} id='priceH'></p>
-               </article>
+               {searchList}
             </div>
         </section>
     )
@@ -27,7 +40,8 @@ export default SearchHistory;
 const styles = {
     body: {
         width: '100vw',
-        height: '75vh',
+        height: '100%',
+        backgroundColor: '#EBEBED',
         display: 'flex',
         justifyContent: 'space-around'
     },
@@ -49,5 +63,17 @@ const styles = {
         height: '5rem',
         padding: '1rem',
         borderRadius: '.25rem'
+    },
+    article2: {
+        width: '90%',
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        height: '5rem',
+        padding: '1rem',
+        borderRadius: '.25rem',
+        backgroundColor: '#fff',
+        boxShadow: '0 0 5px 5px #D6D7DD',
+        marginBottom: '1.5rem'
     }
 }

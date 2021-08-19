@@ -34,7 +34,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#EBEBED'
+    backgroundColor: '#EBEBED',
+    height: '100%'
   },
   output: {
     fontSize: '1.6rem'
