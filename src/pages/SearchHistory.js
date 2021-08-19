@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react'
 
 function SearchHistory(props) {
     const [coinList, setState] = useState([])
+    console.log(props.history);
     
     useEffect(() => {
-        // if(coinList.length === 0){
-        //     return
-        // }
+        if(!props.history.location.state){
+            return
+        }
         setState(coin => [...coin, props.location.state.data])
-    }, []);
+    }, [props]);
 
     let searchList = coinList.map((element) => {
-        return <article style={styles.article2}>
+        return <article key={element.id}style={styles.article2}>
             <img alt='cryptocurrency coin logo' src={element.img} style={{height: '75px'}}/>
             <p style={styles.output}>{element.name}</p>
             <p style={styles.output}>{element.price}</p>
