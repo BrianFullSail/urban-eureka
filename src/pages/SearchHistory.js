@@ -5,10 +5,30 @@ function SearchHistory(props) {
     console.log(props.history);
     
     useEffect(() => {
-        if(!props.history.location.state){
+        // if there is no prop passed AND no storage then return
+        if(!props.history.location.state && !localStorage.getItem('cList')){
             return
         }
-        setState(coin => [...coin, props.location.state.data])
+        //if there no prop passed but there is storage then update the state to display the storage
+        else if(localStorage.getItem('cList')){
+            let cList = JSON.parse(localStorage.getItem('cList'))
+            setState(cList)
+            // if there was a prop passed
+            if(props.history.location.state){
+                let newList = ([props.location.state.data, ...cList])
+                localStorage.setItem('cList', JSON.stringify(newList))
+            }
+        }
+        // if there was a prop passed and there was no list then create the list after pushing the prop
+        else{
+            let cList = []
+            if(props.history.location.state){
+                cList.push(props.location.state.data)
+                localStorage.setItem('cList', JSON.stringify(cList))
+            }
+            
+        }
+        // setState(coin => [...coin, props.location.state.data])
     }, [props]);
 
     let searchList = coinList.map((element) => {
