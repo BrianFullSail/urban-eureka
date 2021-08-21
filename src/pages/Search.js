@@ -131,6 +131,7 @@ const styles = {
         color: 'white',
         padding: '.5rem 3rem',
         borderRadius: '.5rem',
-        fontSize: '1.6rem'
+        fontSize: '1.6rem',
+        cursor: 'pointer'
     }
 }

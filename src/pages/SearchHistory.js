@@ -8,10 +8,11 @@ function SearchHistory(props) {
     useEffect(() => {
         document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
 
-        
+        getColor()
         // if there is no prop passed AND no storage then return
         if(!props.history.location.state && !localStorage.getItem('cList')){
             document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
+            getColor();
             return
         }
         //if there no prop passed but there is storage then update the state to display the storage
@@ -36,7 +37,7 @@ function SearchHistory(props) {
 
         document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
 
-        
+        getColor();
 
         // setState(coin => [...coin, props.location.state.data])
     }, [props]);
@@ -69,33 +70,41 @@ function SearchHistory(props) {
         padding: 1rem;
         borderRadius: .25rem;
         `
+
+        getColor()
     }
 
-    // if(document.getElementById('btn').disabled === true){
-    //         document.getElementById('btn').style.cssText = `
-    //         height: 50px;
-    //         backgroundColor: #8ca0ac;
-    //         color: #fff;
-    //         padding: .5rem 3rem;
-    //         border-radius: .5rem;
-    //         font-size: 1.6rem;
-    //         margin-top: 1.5rem;
-    //     `;
-    //     }
+    const getColor = () => {
+        if(document.getElementById('btn').disabled === true){
+            document.getElementById('btn').style.cssText = `
+            height: 50px;
+            background-color: #cccecf;
+            color: #fff;
+            padding: .5rem 3rem;
+            border-radius: .5rem;
+            font-size: 1.6rem;
+            margin-top: 1.5rem;
+            cursor: auto
+        `;
+        }
+    
+        else{
+            document.getElementById('btn').style.cssText = `
+            height: 50px;
+            background-color: #022b3a;
+            color: #fff;
+            padding: .5rem 3rem;
+            border-radius: .5rem;
+            font-size: 1.6rem;
+            margin-top: 1.5rem;
+            cursor: pointer
+        `;
+        }
 
-    //     if(document.getElementById('btn').disabled === false){
-    //         document.getElementById('btn').style.cssText = `
-    //         height: 50px;
-    //         backgroundColor: #022b3a;
-    //         color: #fff;
-    //         padding: .5rem 3rem;
-    //         border-radius: .5rem;
-    //         font-size: 1.6rem;
-    //         margin-top: 1.5rem;
-    //     `;
-    //     }
+    }
 
     return (
+        
         <section style={styles.body}>
            <div id='mainInfo' style={styles.main}>
                <h2>Search Results</h2>
@@ -103,7 +112,7 @@ function SearchHistory(props) {
                     <p style={styles.output} id='title'></p>
                     <p style={styles.output} id='price'></p>
                </article>
-               <Button style={styles.btn} btnText='Clear History' onClick={clearHistory} />
+               <Button btnText='Clear History' onClick={clearHistory} />
             </div>
             <div style={styles.main}>
                <h2>Search History</h2>
@@ -153,18 +162,5 @@ const styles = {
         backgroundColor: '#fff',
         boxShadow: '0 0 5px 5px #D6D7DD',
         marginBottom: '1.5rem'
-    },
-    btn: {
-        height: '50px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: '#022b3a',
-        color: 'white',
-        padding: '.5rem 3rem',
-        borderRadius: '.5rem',
-        fontSize: '1.6rem',
-        marginTop: '1.5rem'
     }
 }
