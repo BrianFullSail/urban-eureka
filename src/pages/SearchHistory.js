@@ -53,8 +53,11 @@ function SearchHistory(props) {
         localStorage.clear();
         setState([])
         document.getElementById('btn').disabled = true
-        const coinLogo = document.getElementById('coinLogo')
-        document.getElementById('info').removeChild(coinLogo)
+        if(document.getElementById('coinLogo')){
+            const coinLogo = document.getElementById('coinLogo')
+            document.getElementById('info').removeChild(coinLogo)
+        }
+        
         document.getElementById('title').innerText = ''
         document.getElementById('price').innerText = ''
         document.getElementById('info').style.cssText = `
@@ -68,29 +71,29 @@ function SearchHistory(props) {
         `
     }
 
-    if(document.getElementById('btn').disabled === true){
-            document.getElementById('btn').style.cssText = `
-            height: 50px;
-            backgroundColor: #8ca0ac;
-            color: #fff;
-            padding: .5rem 3rem;
-            border-radius: .5rem;
-            font-size: 1.6rem;
-            margin-top: 1.5rem;
-        `;
-        }
+    // if(document.getElementById('btn').disabled === true){
+    //         document.getElementById('btn').style.cssText = `
+    //         height: 50px;
+    //         backgroundColor: #8ca0ac;
+    //         color: #fff;
+    //         padding: .5rem 3rem;
+    //         border-radius: .5rem;
+    //         font-size: 1.6rem;
+    //         margin-top: 1.5rem;
+    //     `;
+    //     }
 
-        if(document.getElementById('btn').disabled === false){
-            document.getElementById('btn').style.cssText = `
-            height: 50px;
-            backgroundColor: #022b3a;
-            color: #fff;
-            padding: .5rem 3rem;
-            border-radius: .5rem;
-            font-size: 1.6rem;
-            margin-top: 1.5rem;
-        `;
-        }
+    //     if(document.getElementById('btn').disabled === false){
+    //         document.getElementById('btn').style.cssText = `
+    //         height: 50px;
+    //         backgroundColor: #022b3a;
+    //         color: #fff;
+    //         padding: .5rem 3rem;
+    //         border-radius: .5rem;
+    //         font-size: 1.6rem;
+    //         margin-top: 1.5rem;
+    //     `;
+    //     }
 
     return (
         <section style={styles.body}>
