@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import Button from '../components/Button';
 
 function SearchHistory(props) {
     const [coinList, setState] = useState([])
     console.log(props.history);
     
     useEffect(() => {
+        document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
+
+        
         // if there is no prop passed AND no storage then return
         if(!props.history.location.state && !localStorage.getItem('cList')){
+            document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
             return
         }
         //if there no prop passed but there is storage then update the state to display the storage
@@ -28,6 +33,11 @@ function SearchHistory(props) {
             }
             
         }
+
+        document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
+
+        
+
         // setState(coin => [...coin, props.location.state.data])
     }, [props]);
 
@@ -39,14 +49,58 @@ function SearchHistory(props) {
          </article>
     })
 
+    const clearHistory = () => {
+        localStorage.clear();
+        setState([])
+        document.getElementById('btn').disabled = true
+        const coinLogo = document.getElementById('coinLogo')
+        document.getElementById('info').removeChild(coinLogo)
+        document.getElementById('title').innerText = ''
+        document.getElementById('price').innerText = ''
+        document.getElementById('info').style.cssText = `
+        width: 90%;
+        display: flex;
+        justifyContent: space-around;
+        alignItems: center;
+        height: 5rem;
+        padding: 1rem;
+        borderRadius: .25rem;
+        `
+    }
+
+    if(document.getElementById('btn').disabled === true){
+            document.getElementById('btn').style.cssText = `
+            height: 50px;
+            backgroundColor: #8ca0ac;
+            color: #fff;
+            padding: .5rem 3rem;
+            border-radius: .5rem;
+            font-size: 1.6rem;
+            margin-top: 1.5rem;
+        `;
+        }
+
+        if(document.getElementById('btn').disabled === false){
+            document.getElementById('btn').style.cssText = `
+            height: 50px;
+            backgroundColor: #022b3a;
+            color: #fff;
+            padding: .5rem 3rem;
+            border-radius: .5rem;
+            font-size: 1.6rem;
+            margin-top: 1.5rem;
+        `;
+        }
+
     return (
         <section style={styles.body}>
-           <div style={styles.main}>
+           <div id='mainInfo' style={styles.main}>
                <h2>Search Results</h2>
                <article id='info' style={styles.article}>
                     <p style={styles.output} id='title'></p>
                     <p style={styles.output} id='price'></p>
                </article>
+               <Button style={styles.btn} btnText='Clear History' onClick={clearHistory} />
             </div>
             <div style={styles.main}>
                <h2>Search History</h2>
@@ -96,5 +150,18 @@ const styles = {
         backgroundColor: '#fff',
         boxShadow: '0 0 5px 5px #D6D7DD',
         marginBottom: '1.5rem'
+    },
+    btn: {
+        height: '50px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: '#022b3a',
+        color: 'white',
+        padding: '.5rem 3rem',
+        borderRadius: '.5rem',
+        fontSize: '1.6rem',
+        marginTop: '1.5rem'
     }
 }

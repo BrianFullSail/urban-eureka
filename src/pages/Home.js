@@ -10,7 +10,7 @@ function Home() {
 
                 <div style={styles.newsArticle}>
                     <h2>Welcome to Cryptocurrency Price Search</h2>
-                    <p>On this site you will be able to search for the price of nearly 2k different cryptocurrencies on the market. Head over to the <Link to={'./Search'} style={styles.links}>search</Link> page to enter a search or the search history page to see the history of your searches. We plan to add more cryptocurrencies as they enter the market, and in the future more data will be available to the current searches.</p>
+                    <p>On this site you will be able to search for the price of nearly 2k different cryptocurrencies on the market. Head over to the <Link to={'./Search'} style={styles.links}>search</Link> page to enter a search or the <Link to={'./SearchHistory'} style={styles.links}>search history</Link> page to see the history of your searches. We plan to add more cryptocurrencies as they enter the market, and in the future more data will be available to the current searches.</p>
                     <p>Bitcoin currently leads the market being the most popular and the highest price point. Ethereum is closing in fast on Bitcoins popularity and may some day even lead on price point. Today there are many other cryptocurrencies such as Caradno and Chainlink gaining popularity as their prices sore. Anyone new to the market would be wise to invest in anything related to Ethereum as it covers many of the other currencies on the market that use the Ethereum blockchain.</p>
                 </div>
             </article>

@@ -6,7 +6,7 @@ function Search({ history }) {
     async function fetchAPI(){
         const coinGecko = require('coingecko-api');
         const coingeckoclient = new coinGecko();
-        const response = await coingeckoclient.coins.fetch(document.myForm.userSearch.value, {});
+        const response = await coingeckoclient.coins.fetch(document.myForm.userSearch.value.toLowerCase(), {});
     
         return response;
     }
@@ -54,13 +54,13 @@ function Search({ history }) {
 
         }
     }
-    
+
     return (
         <section>
             <form name='myForm' onSubmit={addCoin}  style={styles.form}>
                 <h2>Please enter a crypto currency you would like to search</h2> 
                 <input placeholder="Enter a Crypto Currency" style={styles.input} id='userSearch'/>
-                <Button btnText='Search' />
+                <Button style={styles.btn} btnText='Search' />
             </form>
             <div style={styles.examples}>
                 <h3>Example Searches</h3>
@@ -120,5 +120,17 @@ const styles = {
         display: 'flex',
         width: 'calc(100%/4)',
         margin: '0 5rem'
+    },
+    btn: {
+        height: '50px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: '#022b3a',
+        color: 'white',
+        padding: '.5rem 3rem',
+        borderRadius: '.5rem',
+        fontSize: '1.6rem'
     }
 }
