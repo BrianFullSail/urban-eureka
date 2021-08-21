@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import Button from '../components/Button';
 import { withRouter } from 'react-router-dom'
 
 function Search({ history }) {
+    const focalPoint = useRef(null);
+
+    useEffect(() => {
+        focalPoint.current.focus();
+    }, [])
+
     async function fetchAPI(){
         const coinGecko = require('coingecko-api');
         const coingeckoclient = new coinGecko();
@@ -59,7 +65,7 @@ function Search({ history }) {
         <section>
             <form name='myForm' onSubmit={addCoin}  style={styles.form}>
                 <h2>Please enter a crypto currency you would like to search</h2> 
-                <input placeholder="Enter a Crypto Currency" style={styles.input} id='userSearch'/>
+                <input placeholder="Enter a Cryptocurrency" style={styles.input} id='userSearch'  ref={focalPoint}/>
                 <Button style={styles.btn} btnText='Search' />
             </form>
             <div style={styles.examples}>

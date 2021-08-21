@@ -6,13 +6,14 @@ function SearchHistory(props) {
     console.log(props.history);
     
     useEffect(() => {
+        // set the button to enabled or disaabled based on exixtance of local storage
         document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
 
         getColor()
+
         // if there is no prop passed AND no storage then return
         if(!props.history.location.state && !localStorage.getItem('cList')){
             document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
-            getColor();
             return
         }
         //if there no prop passed but there is storage then update the state to display the storage
@@ -32,7 +33,6 @@ function SearchHistory(props) {
                 cList.push(props.location.state.data)
                 localStorage.setItem('cList', JSON.stringify(cList))
             }
-            
         }
 
         document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
@@ -42,6 +42,7 @@ function SearchHistory(props) {
         // setState(coin => [...coin, props.location.state.data])
     }, [props]);
 
+    // map through the coinList array and display each element
     let searchList = coinList.map((element) => {
         return <article key={element.id}style={styles.article2}>
             <img alt='cryptocurrency coin logo' src={element.img} style={{height: '75px'}}/>
@@ -50,6 +51,7 @@ function SearchHistory(props) {
          </article>
     })
 
+    // clear the coinList array and local storage
     const clearHistory = () => {
         localStorage.clear();
         setState([])
@@ -74,6 +76,7 @@ function SearchHistory(props) {
         getColor()
     }
 
+    // set the styling of the clear history button
     const getColor = () => {
         if(document.getElementById('btn').disabled === true){
             document.getElementById('btn').style.cssText = `
