@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import Nav from './components/Nav'
 import coins from './images/cryptocurrency.png'
 import bitcoin from './images/blackcoin.png'
