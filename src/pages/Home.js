@@ -35,15 +35,13 @@ const styles = {
         justifyContent: 'center',
         backgroundColor: '#fff',
         borderRadius: '.25rem',
-        boxShadow: '0 0 5px 5px #D6D7DD',
-
+        boxShadow: '0 0 5px 5px #D6D7DD'
     },
     images: {
         width: '100%',
         height: '100%',
         borderRadius: '.25rem .25rem 0 0',
         objectFit: 'cover'
-
     },
     newsArticle: {
         marginLeft: '2rem',

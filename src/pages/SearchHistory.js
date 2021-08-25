@@ -3,7 +3,6 @@ import Button from '../components/Button';
 
 function SearchHistory(props) {
     const [coinList, setState] = useState([])
-    console.log(props.history);
     
     useEffect(() => {
         // set the button to enabled or disaabled based on exixtance of local storage
@@ -12,7 +11,7 @@ function SearchHistory(props) {
         getColor()
 
         // if there is no prop passed AND no storage then return
-        if(!props.history.location.state && !localStorage.getItem('cList')){
+        if(!props.location.state && !localStorage.getItem('cList')){
             document.getElementById('btn').disabled = localStorage.getItem('cList') ? false : true
             return
         }
@@ -21,7 +20,7 @@ function SearchHistory(props) {
             let cList = JSON.parse(localStorage.getItem('cList'))
             setState(cList)
             // if there was a prop passed
-            if(props.history.location.state){
+            if(props.location.state){
                 let newList = ([props.location.state.data, ...cList])
                 localStorage.setItem('cList', JSON.stringify(newList))
             }
@@ -29,7 +28,7 @@ function SearchHistory(props) {
         // if there was a prop passed and there was no list then create the list after pushing the prop
         else{
             let cList = []
-            if(props.history.location.state){
+            if(props.location.state){
                 cList.push(props.location.state.data)
                 localStorage.setItem('cList', JSON.stringify(cList))
             }
@@ -39,7 +38,6 @@ function SearchHistory(props) {
 
         getColor();
 
-        // setState(coin => [...coin, props.location.state.data])
     }, [props]);
 
     // map through the coinList array and display each element
@@ -72,7 +70,6 @@ function SearchHistory(props) {
         padding: 1rem;
         borderRadius: .25rem;
         `
-
         getColor()
     }
 
@@ -103,7 +100,6 @@ function SearchHistory(props) {
             cursor: pointer
         `;
         }
-
     }
 
     return (
